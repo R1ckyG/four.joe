@@ -1,0 +1,7 @@
+<Alloy>
+	<Window title="My Profile" class="container">
+		<View>
+		<Label id="label" onClick="doClick">Hello, World</Label>
+		</View>
+	</Window>
+</Alloy>
