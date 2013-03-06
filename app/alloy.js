@@ -7,5 +7,6 @@
 // make available throughout your app. You can easily make things
 // accessible globally by attaching them to the `Alloy.Globals`
 // object. For example:
-//
+
+Alloy.Collections.students = Alloy.createCollection('student-info');
 // Alloy.Globals.someGlobalFunction = function(){};

@@ -1,7 +1,14 @@
 <Alloy>
-	<Window title="My Profile" class="container">
-		<View>
-		<Label id="label" onClick="doClick">Hello, World</Label>
-		</View>
-	</Window>
+  <TabGroup backgroundColor="white">
+    <Tab id="profile" title="My Profile">
+     <Window id="profileWin" title="My Profile">
+      <Require src="student-info"/>
+     </Window>
+    </Tab>
+     <Tab id="course" title="My Classes">
+      <Window id="courseWin" title="My Courses">
+       <Label id="label" onClick="doClick">Classes go here</Label>
+      </Window>
+     </Tab>
+   </TabGroup>
 </Alloy>
