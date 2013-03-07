@@ -2,7 +2,7 @@
   <TabGroup backgroundColor="white">
     <Tab id="profile" title="My Profile">
      <Window id="profileWin" title="My Profile">
-      <Require src="student-info"/>
+      <Require src="studentinfo"/>
      </Window>
     </Tab>
      <Tab id="course" title="My Classes">

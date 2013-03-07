@@ -1,22 +1,22 @@
 exports.definition = {
 	config: {
     columns:{
-      'first-name': 'text',
-      'last-name': 'text',
+      'firstname': 'text',
+      'lastname': 'text',
       email: 'text',
       school: 'text',
       point:'integer' 
     },
     defaults:{
-      'first-name': 'foo',
-      'last-name': 'bar',
-      email: '--',
-      school: '--',
+      'firstname': 'foo',
+      'lastname': 'bar',
+      email: 'XX',
+      school: 'XX',
       point: 0,
     },
 		adapter: {
 			type: "sql",
-			collection_name: "student-info"
+			collection_name: "studentinfo"
 		}
 	},		
 	extendModel: function(Model) {		

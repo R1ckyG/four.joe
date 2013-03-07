@@ -1,0 +1,5 @@
+<Alloy>
+	<View class="container">
+	  <Label id="first_name" text="firstname"/><Label id="last_name" text="lastname"/>
+  </View>
+</Alloy>

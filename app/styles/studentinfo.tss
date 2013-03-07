@@ -1,0 +1,25 @@
+".container": {
+	backgroundColor: "white",
+	top:0,
+	height: '20%',
+	borderWidth:"2dp",
+	borderColor:"black",
+	layout:"horizontal",
+}
+
+"#first_name":{
+	left: "8dp",
+  top: '50%',
+	font: {
+		fontSize: 18,
+	}
+}
+
+"#last_name":{
+	left: "5dp",
+	top: '50%',
+	font: {
+		fontSize: 18,
+	}
+}
+

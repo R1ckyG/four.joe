@@ -8,5 +8,5 @@
 // accessible globally by attaching them to the `Alloy.Globals`
 // object. For example:
 
-Alloy.Collections.students = Alloy.createCollection('student-info');
+Alloy.Collections.students = Alloy.createCollection('studentinfo');
 // Alloy.Globals.someGlobalFunction = function(){};

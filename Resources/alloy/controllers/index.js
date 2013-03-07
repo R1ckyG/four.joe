@@ -13,7 +13,7 @@ function Controller() {
         id: "profileWin",
         title: "My Profile"
     });
-    $.__views.__alloyId1 = Alloy.createController("student-info", {
+    $.__views.__alloyId1 = Alloy.createController("studentinfo", {
         id: "__alloyId1"
     });
     $.__views.__alloyId1.setParent($.__views.profileWin);
