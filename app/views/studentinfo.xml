@@ -1,5 +1,6 @@
 <Alloy>
 	<View class="container">
 	  <Label id="first_name" text="firstname"/><Label id="last_name" text="lastname"/>
+	  <Label id="university" text="School"/><Label id="grad_year" text="11"/>
   </View>
 </Alloy>
