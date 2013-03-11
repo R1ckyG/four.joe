@@ -1,0 +1,6 @@
+".container": {
+	backgroundColor: "white"
+},
+"#toolbar":{
+	bottom:"0%",
+}

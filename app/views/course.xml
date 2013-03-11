@@ -1,0 +1,17 @@
+<Alloy>
+	<Window title="Your mom" class="container">
+		<TableView filterAttribute="title">
+			<SearchBar id="search" barColor="#000" showCancel="true" height="43" top="0" />
+			<TableViewRow title="foo"/>
+			<TableViewRow title="bar"/>
+			<TableViewRow title="boo"/>
+		</TableView>
+		<Toolbar id="toolbar" platform="ios">
+			<Items>
+				<Button>????</Button>
+				<FlexSpace/>
+				<Button>Home</Button>
+			</Items>
+		</Toolbar>
+	</Window>
+</Alloy>
