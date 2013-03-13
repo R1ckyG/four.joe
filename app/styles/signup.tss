@@ -1,0 +1,83 @@
+".container": {
+	backgroundColor: "white"
+},
+
+".border":{
+	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	borderWidth: 1,
+	borderRadius: 4,
+}
+
+"#firstNameLabel": {
+	height:'30dp',
+},
+
+"#firstLabel":{
+	top:10,
+	left: '3%',
+	height:30,
+	width:100,
+},
+
+"#firstname":{
+	top: 10,
+	height: 30,
+	right: '3%',
+	width:200
+},
+
+"#lastLabel":{
+	top:40,
+	left: '3%',
+	height:30,
+	width:100,
+},
+
+"#lastname":{
+	top: 45,
+	height: 30,
+	right: '3%',
+	width: 200
+},
+
+"#emailLabel":{
+	top:80,
+	left: '3%',
+	height:30,
+	width:100,
+},
+
+"#email":{
+	top: 80,
+	height: 30,
+	right: '3%',
+	width:200
+},
+
+"#userLabel":{
+	top:115,
+	left: '3%',
+	height:30,
+	width:100,
+},
+
+"#username":{
+	top: 115,
+	height: 30,
+	right: '3%',
+	width:200
+},
+
+"#passLabel":{
+	top:150,
+	left: '3%',
+	height:30,
+	width:100,
+},
+
+"#password":{
+	top: 150,
+	height: 30,
+	right: '3%',
+	width:200
+}

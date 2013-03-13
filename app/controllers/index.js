@@ -1,5 +1,5 @@
 var settings = Alloy.createController('settings'),
-		stats = Alloy.createController('stat'),
+		stats = Alloy.createController('signup'),
 		courses = Alloy.createController('course');
 
 function doClick(e) {  

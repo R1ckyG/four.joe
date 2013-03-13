@@ -1,0 +1,38 @@
+
+<html>
+	<head>
+		<title>Test page</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>	  
+    <script type="text/javascript">
+			var jq = jQuery;
+			jq(document).ready(function(){
+				var xhr =jq.ajax('/api/v1/get_schools', {
+				  async:true,
+				  success:function(data, status, xhr){
+				    console.log('Donez', data);
+				    var school_dropdown = jq('#school');
+				    for(var d in data){
+				      var datum = data[d];
+				      console.log('adding', datum)
+				      school_dropdown.append('<option _id="' + datum['_id'] + '" name="'
+				                             +datum['college'].toLowerCase() + '>' 
+				                             +datum['college']+ '</option>')
+				    }
+				  }
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Sign up</h1>
+		<form name="signup" action="/signup" method="post">
+			First Name: <input type="text" name="first-name"/>
+			<br>Last Name: <input type="text" name="last-name"/>
+			<br>Email: <input type="email" name="email"/>
+			<br>Username: <input type="text" name="username"/>
+			<br>Password: <input type="password" name="pass"/>
+			<br>School: <select id="school" type="text" name="school"/>
+			<br><input type="submit" value="Sign up">
+		</form>
+	</body>
+</html>
