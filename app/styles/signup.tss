@@ -80,4 +80,13 @@
 	height: 30,
 	right: '3%',
 	width:200
+},
+
+'#schools':{
+	top:185,
+	useSpinner: true,
+},
+
+"#schoolColumn":{
+
 }

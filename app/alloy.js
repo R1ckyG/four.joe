@@ -9,4 +9,16 @@
 // object. For example:
 
 Alloy.Collections.students = Alloy.createCollection('studentinfo');
+Alloy.Models.user = Alloy.createModel('user');
+var options = {
+  success: function(resObj, resText, options){
+    Alloy.Models.user.set('_id',resObj['_id']);
+    Ti.API.debug(resText);
+  },
+  error: function(model, error, options){
+    Alloy.Models.user.set('_id', error);
+    Ti.API.debug(error + JSON.stringify( Alloy.Models.user));
+  },
+}
+Alloy.Models.user.save(null, options);
 // Alloy.Globals.someGlobalFunction = function(){};

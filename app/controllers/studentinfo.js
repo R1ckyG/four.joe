@@ -14,3 +14,6 @@ if(!$model){
     student.destroy();
   }
 }*/
+var user = Alloy.Models.user;
+user.fetch();
+Ti.API.debug('su: ' + user.toJSON());

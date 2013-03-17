@@ -1,6 +1,7 @@
 var settings = Alloy.createController('settings'),
 		stats = Alloy.createController('signup'),
-		courses = Alloy.createController('course');
+		courses = Alloy.createController('course'),
+    user = Alloy.Models.user;
 
 function doClick(e) {  
     alert($.label.text);
@@ -22,3 +23,4 @@ function openClass(e){
 }
 
 $.index.open();
+user.fetch();

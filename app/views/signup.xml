@@ -14,6 +14,10 @@
 	
 		<Label id="passLabel" text="Password:"/>
 		<TextField id="password" class="border"/>
-	
+		<Picker id="schools" selectionIndicator="true" onChange="setSchool">
+			<PickerColumn id="schoolColumn">
+			</PickerColumn>
+		</Picker>
+		<Button id="submit" text="Sign Up" onClick="onSignUp"/>
 	</Window>
 </Alloy>
