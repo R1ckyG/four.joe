@@ -13,8 +13,10 @@ exports.definition = {
 
     extendModel: function(Model) {		
         _.extend(Model.prototype, {
-            // Extend, override or implement Backbone.Model 
-        });
+           // Extend, override or implement Backbone.Model 
+					 urlRoot: '/course/',
+					 name:'course',	
+				});
 		
         return Model;
     },
@@ -22,6 +24,8 @@ exports.definition = {
     extendCollection: function(Collection) {		
         _.extend(Collection.prototype, {
             // Extend, override or implement Backbone.Collection 
+ 					 urlRoot: '/courses/',	
+					 name: 'courses',
         });
 		
         return Collection;

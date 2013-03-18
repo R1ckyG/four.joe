@@ -1,5 +1,8 @@
 <Alloy>
 	<Window title="Add a Course" class="container">
-	
-   </Window>
+		<Picker id="courses" selectionIndicator="true" onChange="setClass">
+			<PickerColumn id="courseColumn">
+			</PickerColumn>
+		</Picker>
+  </Window>
 </Alloy>

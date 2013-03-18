@@ -143,13 +143,13 @@ app.post('/api/v1/user/', function(req, res){
   		if(docs.length || err){
         var id = docs.length ? docs[0]['_id'] : '';
         console.log('user exist');
-  			res.send(403, {
+  			res.send(403,  {
           'errors':[{
             'reason':'exist',
             'message':id
           }], 
-          'model':docs[0]
-        });
+					'model': docs[0]
+				});
   		}else{
   			userM.create(args, function(err){
   		    if(err){
@@ -292,6 +292,23 @@ app.post('/api/v1/add_comment', function(req, res){
 			res.send(200, 'Saved comment');
 			//updte question, answer, or chat
 			//update user?
+		}
+	});
+});
+
+app.get('/api/v1/courses/', function(req, res){
+	courseM.find({}, function(err, docs){
+		if(err){
+      var message = {
+        'errors':[
+          {'message': 'Could not create course'},
+        ]
+      };
+			console.log('Error retrieving courses');
+			res.send(403, message);
+		}else{
+			console.log('getting courses: ', docs);
+			res.send(200, docs);
 		}
 	});
 });

@@ -18,7 +18,8 @@ exports.definition = {
         _.extend(Model.prototype, {
             // Due to JSON parsing errors, use id_str instead of id.
             // The IDs are too large to store as integers using the JavaScript spec.
-          	
+          	urlRoot: '/user/',
+						name: 'user',
           	initialize: function(){
           		Ti.API.debug('Creating user model');
           		this.on('invalid', function(model, error){

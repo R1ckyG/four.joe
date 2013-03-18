@@ -10,9 +10,20 @@
 
 //Alloy.Collections.students = Alloy.createCollection('studentinfo');
 Alloy.Collections.courses = Alloy.createCollection('course');
-Alloy.Collections.courses.fetch();
-Alloy.Models.user = Alloy.createModel('user');
 var options = {
+	success: function(resObj, resText, options) {
+		//addClasses();
+		Ti.API.debug('Adding classes'+ JSON.stringify(Alloy.Collections.courses));
+	},
+	error: function(resObj, resText, options) {
+		//addClasses();
+		Ti.API.debug('error sAdding classes'+ JSON.stringify(Alloy.Collections.courses));
+	},
+}
+//Alloy.Collections.courses.fetch(options);
+//Ti.API.debug('Courses' + JSON.stringify(Alloy.Collections.courses))
+Alloy.Models.user = Alloy.createModel('user');
+options = {
   success: function(resObj, resText, options){
     //Alloy.Models.user.set('_id',resObj['_id']);
     //Alloy.Models.user.id = resObj['_id'];
@@ -24,7 +35,7 @@ var options = {
     Ti.API.debug('Alloy.js error: ' + error + ': ' + JSON.stringify(model));
   },
 }
-Alloy.Models.user.fetch(options);
+//Alloy.Models.user.fetch(options);
 Alloy.Updates = {
   userFuncs: [],
   addUserFunc: function(f){

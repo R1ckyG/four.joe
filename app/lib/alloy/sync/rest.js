@@ -26,11 +26,14 @@ module.exports.sync = function(method, model, options) {
   switch(method) {
     // This case is called by the Model.fetch and Collection.fetch methods to retrieve data.
     case 'read':
-      Ti.API.debug("id: "+ type + ': ' + JSON.stringify( model));
       var id = model.get('id');
-      Ti.API.debug('Performing rest.js read');
-      makeHTTPRequest('GET', call_url + id, null, callback);
-      break;
+      Ti.API.debug('Performing rest.js read:' + model.urlRoot + ':' + type);
+      if(model.name === 'user'){
+				makeHTTPRequest('GET', BASE_URL + model.urlRoot + id, null, callback);
+      }else{
+      	makeHTTPRequest('GET', BASE_URL + model.urlRoot, null, callback);
+      }
+			break;
           
     // This case is called by the Model.save and Collection.create methods
     // to a initialize model if the IDs are not set.
@@ -97,6 +100,7 @@ module.exports.beforeModelCreate = function(config, name) {
   if (config.adapter.base_url) {
       call_url =  BASE_URL +config.adapter.base_url;
   }	
+	Ti.API.debug('Making call with url: ' + call_url + 'name');
   return config;
 };
 
