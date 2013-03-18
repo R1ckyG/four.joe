@@ -1,6 +1,6 @@
 var addClasses = function(courses){
 	var picker = $.courseColumn;
-	for(var i in courses){
+	for(var i = 0; i < courses.length; i++){
 		var course = Alloy.Collections.courses.at(i);
 		Ti.API.debug('Courses' + JSON.stringify(courses))
 		var label = Ti.UI.createLabel({
@@ -9,7 +9,7 @@ var addClasses = function(courses){
 			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 		});
 		Ti.API.debug('Adding course: ' + course.get('title'));
-		picker.add(course); 
+		//picker.add(course); 
 	}
 };
 
