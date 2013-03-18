@@ -1,6 +1,6 @@
 <Alloy>
 	<View class="container">
 	  <Label id="first_name" text="{user.firstname}"/><Label id="last_name" text="{user.lastname}"/>
-	  <Label id="university" text="{user.college}"/><Label id="grad_year" text="11"/>
+	  <Label id="university" text="{user.school}"/><Label id="grad_year" text="11"/>
   </View>
 </Alloy>

@@ -15,5 +15,5 @@ if(!$model){
   }
 }*/
 var user = Alloy.Models.user;
-user.fetch();
-Ti.API.debug('su: ' + user.toJSON());
+Alloy.Models.user.trigger('change');
+Ti.API.debug('student info: ' + JSON.stringify(user));

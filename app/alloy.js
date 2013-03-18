@@ -8,17 +8,35 @@
 // accessible globally by attaching them to the `Alloy.Globals`
 // object. For example:
 
-Alloy.Collections.students = Alloy.createCollection('studentinfo');
+//Alloy.Collections.students = Alloy.createCollection('studentinfo');
+Alloy.Collections.courses = Alloy.createCollection('course');
+Alloy.Collections.courses.fetch();
 Alloy.Models.user = Alloy.createModel('user');
 var options = {
   success: function(resObj, resText, options){
-    Alloy.Models.user.set('_id',resObj['_id']);
-    Ti.API.debug(resText);
+    //Alloy.Models.user.set('_id',resObj['_id']);
+    //Alloy.Models.user.id = resObj['_id'];
+    Ti.API.debug('Alloy.js succcess: ' + JSON.stringify(Alloy.Models.user)+ ' : '+JSON.stringify(resObj));
   },
   error: function(model, error, options){
-    Alloy.Models.user.set('_id', error);
-    Ti.API.debug(error + JSON.stringify( Alloy.Models.user));
+    //Alloy.Models.user.set('_id', error);
+    //model.id = error;
+    Ti.API.debug('Alloy.js error: ' + error + ': ' + JSON.stringify(model));
   },
 }
-Alloy.Models.user.save(null, options);
+Alloy.Models.user.fetch(options);
+Alloy.Updates = {
+  userFuncs: [],
+  addUserFunc: function(f){
+    var index = this.userFuncs.push(f) - 1;
+    return index;
+  },
+  updateUserViews: function(user){
+    for(var i in this.userFuncs){
+      var f  = this.userFuncs[i];
+      f(user);
+    }
+  }
+}
+
 // Alloy.Globals.someGlobalFunction = function(){};

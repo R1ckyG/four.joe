@@ -26,8 +26,9 @@ module.exports.sync = function(method, model, options) {
   switch(method) {
     // This case is called by the Model.fetch and Collection.fetch methods to retrieve data.
     case 'read':
- Ti.API.debug("id" + JSON.stringify( Alloy.Models.user));
-      var id = model.get('_id');
+      Ti.API.debug("id: "+ type + ': ' + JSON.stringify( model));
+      var id = model.get('id');
+      Ti.API.debug('Performing rest.js read');
       makeHTTPRequest('GET', call_url + id, null, callback);
       break;
           
@@ -36,23 +37,26 @@ module.exports.sync = function(method, model, options) {
     // For example, Model.save({text: 'Hola, Mundo'}) 
     // or Collection.create({text: 'Hola, Mundo'}) executes this code.
     case 'create':
+      Ti.API.debug('Performing rest.js create');
       makeHTTPRequest('POST', call_url, payload, callback);
       break;
           
     // This case is called by the Model.destroy method to delete the model from storage.
     case 'delete':
-      var id = model.get('_id');
+      var id = model.get('id');
+      Ti.API.debug('Performing rest.js delete');
       makeHTTPReqeust('POST', call_url + '/destroy/' + id, null, callback);
       break;
 
     // This case is called by the Model.save and Collection.create methods
     // to update a model if they have IDs set.
     case 'update':
-        // Twitter does not have a call to change a tweet.
-        error = 'ERROR: Update method is not implemented!';         
-        break;
+      Ti.API.debug('Performing rest.js update');
+      // Twitter does not have a call to change a tweet.
+      error = 'ERROR: Update method is not implemented!';         
+      break;  
     default :
-        error = 'ERROR: Sync method not recognized!';
+      error = 'ERROR: Sync method not recognized!';
   };
 
   if (error) {
@@ -63,7 +67,11 @@ module.exports.sync = function(method, model, options) {
  
   // Simple default callback function for HTTP request operations.
   function callback(success, response, error) {	
-    res = JSON.parse(response);
+    try{
+      res = JSON.parse(response);
+    }catch(e){
+      return;
+    }
     Ti.API.debug('Sync response: ' + response + JSON.stringify(options));
     if (success) {
         // Calls the default Backbone success callback

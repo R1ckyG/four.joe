@@ -5,7 +5,6 @@ Ti.API.debug('Users: ' + JSON.stringify(user));
 var addSchools = function(e){
 	Ti.API.debug(this.responseText);
   schools = new schoolCollection(JSON.parse(this.responseText));	
-	alert('success');
   Alloy.Collections.schools = schools;
   
 	var schoolColumn = $.schoolColumn;
@@ -39,17 +38,16 @@ var onSignUp = function(e){
 				password:$.password.value,
 				school: selectedSchool.get('_id')
 	}
-  user = Alloy.createModel('user', ud);
-	Alloy.Models.user = user;
   var options = {
     success: function(resObj, resText, options){
-      Ti.API.debug(resText);
+      Ti.API.debug('Setting id ' + JSON.stringify(resObj['_id']) + JSON.stringify( Alloy.Models.user));
     },
     error: function(model, error, options){
-      Ti.API.debug(error);
+      Alloy.Models.user.set('_id', error);
+      Ti.API.debug(error + ': ' + JSON.stringify( Alloy.Models.user));
     },
-  }
-  Alloy.Models.user.save(null, options);
+  };
+  Alloy.Models.user.save(ud, options);
 	Ti.API.debug('Users: ' + JSON.stringify(Alloy.Models.user));
 };
 

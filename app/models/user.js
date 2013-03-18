@@ -30,33 +30,44 @@ exports.definition = {
           		var message = '',
           				fire = false;
 
-          		if(attribs.firstname === undefined){
+          		if(attribs.firstname === undefined 
+                  || attribs.firstname === "" ){
           			message =+ 'No firstname defined\n';
           			fire = true;
           		}
-          		if(attribs.lastname === undefined){
+          		if(attribs.lastname === undefined
+                  || attribs.lastname === ""){
           			message =+ 'No lastname defined\n';
           			fire = true;
           		}
-          		if(attribs.email === undefined){
+          		if(attribs.email === undefined
+                  || attribs.email === ""){
           			message =+ 'No email defined\n';
           			fire = true;
           		}
-          		if(attribs.username === undefined){
+          		if(attribs.username === undefined
+                  || attribs.username === ""){
           			message =+ 'No username defined\n';
           			fire = true;
           		}
-          		if(attribs.password === undefined){
+          		if(attribs.password === undefined
+                  || attribs.password === ""){
           			message =+ 'No password defined\n';
           			fire = true;
           		}
-          		if(attribs.school === undefined){
+          		if(attribs.school === undefined
+                  || attribs.school === ""){
           			message =+ 'No school defined\n';
           			fire = true;
           		}
           		Ti.API.debug(message);
           		if(fire)return message;
-          	}
+          	},
+            parse: function(response, options){
+              Ti.API.debug('Parsing user model');
+              response.id = response._id;
+              return response;
+            }
 
 		}); // end extend
         return Model;

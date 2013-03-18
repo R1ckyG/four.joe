@@ -7,7 +7,6 @@ var User = new Schema({
 	first_name: {type:String, required: true, trim:true},
 	last_name: {type:String, required: true, trim:true},
 	email: {type:String, required: true, trim:true},
-	username: {type:String, required: true, trim:true},
 	password: {type:String, required: true, trim:true},
 	school: {type:String, required: true, trim:true},
 	points: {type:Number, required: true},
@@ -86,7 +85,7 @@ app.post('/signup', function(req, res){
 			email: req.body['email'],
       username: req.body['username'],
 			password: req.body['pass'],
-			school: req.body['school'],
+			school: req.body['school']['_id'],
 			points: 0
 	};	
   userM.find(
@@ -106,6 +105,80 @@ app.post('/signup', function(req, res){
 	  	  res.sendfile('./public/home.html');
 		  });
 	  }
+  });
+});
+
+app.get('/api/v1/user/:id', function(req, res){
+  userM.findById(req.params.id, function(err, book){
+    if(err){
+      var message = {
+        'errors':[
+          {'message': 'User does not exist'},
+        ]
+      }
+      res.send(403, message);
+    }else{
+      res.send(200, book);
+      console.log('Sending: ' + JSON.stringify(book));
+    }
+  });
+});
+
+app.post('/api/v1/user/', function(req, res){
+	console.log('new signup ' + JSON.stringify(req.body));
+  var args = {
+			first_name: req.body['firstname'],
+			last_name: req.body['lastname'],
+			email: req.body['email'],
+      username: req.body['username'],
+			password: req.body['password'],
+			school: req.body['school'],
+			points: 0
+	};
+  	
+  userM.find(
+		{$or: [{email:req.body['email']}, {username:req.body['username']}]}, 
+		function(err, docs){	
+  		//If email user exist
+  		if(docs.length || err){
+        var id = docs.length ? docs[0]['_id'] : '';
+        console.log('user exist');
+  			res.send(403, {
+          'errors':[{
+            'reason':'exist',
+            'message':id
+          }], 
+          'model':docs[0]
+        });
+  		}else{
+  			userM.create(args, function(err){
+  		    if(err){
+  				  res.send(403,  {
+              'errors':[{
+                'reason':'invalid',
+                'message':'doc exist'
+              }]
+            });	
+  				  console.log(err.toString());
+  				  return;
+  			  } 
+          userM.find(
+            {email:req.body['email']},
+            function(err, docs){
+              if(err){
+                res.send(403, {
+                  'errors':[{
+                    'reason':'unknown',
+                    'message':'doc exist'
+                  }]
+                });
+              }else{
+                res.send(200, docs[0]);
+              }
+              console.log('Saved ' + args['first_name']);    
+            });
+  		  });
+  	  }
   });
 });
 

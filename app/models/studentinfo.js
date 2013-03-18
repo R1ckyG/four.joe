@@ -15,7 +15,6 @@ exports.definition = {
       point: 0,
     },
 		adapter: {
-			type: "sql",
 			collection_name: "studentinfo"
 		}
 	},		

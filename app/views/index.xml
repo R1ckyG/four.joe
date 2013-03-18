@@ -5,7 +5,7 @@
       <Require src="studentinfo"/>
       
       <TableView filterAttribute="title" id="course_list">
-        <TableViewSection headerTitle="My Courses">
+        <TableViewSection id="course_section" headerTitle="My Courses">
           <TableViewRow class="course_row" onClick="openClass">
             <Label class="course_name" text="foo"/>
             <Label class="messages" text="(4)"/>
@@ -26,6 +26,9 @@
         </TableViewRow>
         <TableViewRow id="stats" class="course_row" onClick="openStats">
           <Label id="stats_label" text='My Stats'/>
+        </TableViewRow>
+        <TableViewRow id="debug" class="course_row" onClick="debugClick">
+          <Label id="stats_label" text='Debug'/>
         </TableViewRow>
       </TableView>
      </Window>
