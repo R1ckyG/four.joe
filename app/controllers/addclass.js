@@ -5,22 +5,36 @@ var addClasses = function(courses){
 		Ti.API.debug('Courses' + JSON.stringify(courses))
 		var label = Ti.UI.createLabel({
 			text: course.get('title'),
-			height:'auto', width: 'auto',
-			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+			height:'auto', 
+      font:{fontSize:20,fontWeight:'bold'},
 		});
+    var row =  Ti.UI.createPickerRow();
+    row.add(label);
 		Ti.API.debug('Adding course: ' + course.get('title'));
-		//picker.add(course); 
+		$.courseColumn.addRow(row); 
 	}
 };
 
 var setClass = function(e){
 	var course = Alloy.Collections.courses.at(e.rowIndex),
-			courses	 = Alloy.Models.user.get('courses');
+			courses	 = Alloy.Models.user.get('courses'),
+      options = {
+        success: function(resObj, restText, options) {
+          Ti.API.debug('Success updating user' + resText);
+        },
+        error: function(model, error, options) {
+          Ti.API.error('Error updating user');
+          Alloy.Updates.updateUserViews(Alloy.Models.user);
+        }
+      };
+  Ti.API.debug('selecting class: ' + JSON.stringify(course));
 	if(courses){
 		courses.push(course);
-		Alloy.Models.user.set('courses', courses);
+		Alloy.Models.user.set({'courses': courses}, options);
+    Alloy.Updates.updateUserViews(Alloy.Models.user);
 	}else{
-		Alloy.Models.user.set('courses', [course]);
+		Alloy.Models.user.set({'courses': [course]}, options);
+    Alloy.Updates.updateUserViews(Alloy.Models.user);
 	}
 };
 var options = {
@@ -29,7 +43,7 @@ var options = {
 		Ti.API.debug('Adding classes: ' + JSON.stringify(Alloy.Collections.courses));
 	},
 	error: function(model, error, options) {
-		addClasses();
+		addClasses(Alloy.Collections.courses);
 		Ti.API.debug('error sAdding classes: ' + error);
 	},
 }

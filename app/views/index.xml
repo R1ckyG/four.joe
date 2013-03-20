@@ -1,24 +1,14 @@
 <Alloy>
+  
   <Window id="index" class="container">
   <NavigationGroup id="nav" platform="ios,mobileweb" backgroundColor="white">
      <Window id="profileWin" title="My Profile">
       <Require src="studentinfo"/>
-      
-      <TableView filterAttribute="title" id="course_list">
-        <TableViewSection id="course_section" headerTitle="My Courses">
-          <TableViewRow class="course_row" onClick="openClass">
-            <Label class="course_name" text="foo"/>
-            <Label class="messages" text="(4)"/>
-          </TableViewRow>
-          <TableViewRow class="course_row" onClick="openClass">
-            <Label class="course_name" text="bar"/>
-            <Label class="messages" text="(7)"/>
-          </TableViewRow>
-          <TableViewRow class="course_row" onClick="openClass">
-            <Label class="course_name" text="boo"/>
-            <Label class="messages" text="(3)"/>
-          </TableViewRow>
-        </TableViewSection>
+      <TableView filterAttribute="title" id="course_list" >
+        <TableViewRow class="course_row" onClick="openClass">
+          <Label class="course_name" text="title"/>
+          <Label class="messages" text="(4)"/>
+        </TableViewRow>
       </TableView>
       <TableView id="menu_items">
         <TableViewRow id="settings" class="course_row" onClick="openSettings">
