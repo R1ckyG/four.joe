@@ -9,7 +9,7 @@
 // object. For example:
 
 //Alloy.Collections.students = Alloy.createCollection('studentinfo');
-Alloy.Collections.courses = Alloy.Collections.instance('course');
+Alloy.Collections.courses = Alloy.createCollection('course');
 var options = {
 	success: function(resObj, resText, options) {
 		//addClasses();

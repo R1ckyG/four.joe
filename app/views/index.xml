@@ -5,10 +5,12 @@
      <Window id="profileWin" title="My Profile">
       <Require src="studentinfo"/>
       <TableView filterAttribute="title" id="course_list" >
-        <TableViewRow class="course_row" onClick="openClass">
-          <Label class="course_name" text="title"/>
-          <Label class="messages" text="(4)"/>
-        </TableViewRow>
+        <TableViewSection id="course_section">
+				  <TableViewRow class="course_row" onClick="openClass">
+            <Label class="course_name" text="title"/>
+            <Label class="messages" text="(4)"/>
+          </TableViewRow>
+				</TableViewSection>
       </TableView>
       <TableView id="menu_items">
         <TableViewRow id="settings" class="course_row" onClick="openSettings">

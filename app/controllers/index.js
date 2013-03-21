@@ -30,6 +30,9 @@ function debugClick(e){
 
 function openClass(e){
 	var view = courses.getView();
+	if(e.row.className == 'add_class')return;
+	Ti.API.debug(JSON.stringify(Alloy.Models.user.get('courses')) + ' index : ' + e.rowData.id);
+	courses.setClass(Alloy.Models.user.get('courses')[e.index]);
 	$.nav.open(view);
 }
 
@@ -63,13 +66,13 @@ $.course_list.appendRow(addClassRow);
 
 var updateUserCourses = function(courses) {
   var d = $.course_list.getData(),
-      numOfCourse = d.length;
+      numOfCourse = $.course_section.rowCount;
   for(var i = 0; i < numOfCourse; i++){
     Ti.API.debug('Adding row ' + i + '/' + numOfCourse);
     $.course_list.deleteRow(0);
   }
   
-  /*for(var i = 0; i < courses.length; i++){
+  for(var i = 0; i < courses.length; i++){
     Ti.API.debug('Adding row ' + i);
     var course = courses[i]
     var name_label = Ti.UI.createLabel({
@@ -89,6 +92,7 @@ var updateUserCourses = function(courses) {
       height: '50dp',
       layout: 'composite'
     });
+		row.id =i;
     row.add(name_label);
     row.add(message_label);
     $.course_list.appendRow(row);
@@ -99,17 +103,18 @@ var updateUserCourses = function(courses) {
   });
   addClassRow.add(addClassLabel);
 
+	$.course_list.addEventListener('click', openClass) 
   addClassRow.addEventListener('click', function(){
     //alert('this is working!!!');
     var view = addclass.getView();
     $.nav.open(view);  
   });
  
-  $.course_list.appendRow(addClassRow);*/
+  $.course_list.appendRow(addClassRow);
 };
 var updateHomeViews = function(user){
   var courses = user.get('courses');
   Ti.API.debug('Updating home views: ' + JSON.stringify(courses));
   updateUserCourses(user.get('courses'));
 }
-Alloy.Updates.addUserFunc(updateHomeViews);
+updateFuncIndex =  Alloy.Updates.addUserFunc(updateHomeViews);
