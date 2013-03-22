@@ -1,10 +1,12 @@
 <Alloy>
-	<Window title="Your mom" class="container">
-		<TableView filterAttribute="title">
-			<SearchBar id="search" barColor="#000" showCancel="true" height="43" top="0" platform="ios" />
-			<TableViewRow title="foo"/>
-			<TableViewRow title="bar"/>
-			<TableViewRow title="boo"/>
+	<Window title="Your mom" class="container" id="mainContainer">
+		<TableView filterAttribute="title" id="topic_list">
+      <TableViewSection id="topic_section">
+  			<SearchBar id="search" barColor="#000" showCancel="true" height="43" top="0" platform="ios" />
+  			<TableViewRow title="foo"/>
+  			<TableViewRow title="bar"/>
+  			<TableViewRow title="boo"/>
+      </TableViewSection>
 		</TableView>
 		<Toolbar id="toolbar" platform="ios">
 			<Items>

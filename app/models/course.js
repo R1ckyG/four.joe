@@ -15,7 +15,11 @@ exports.definition = {
         _.extend(Model.prototype, {
            // Extend, override or implement Backbone.Model 
 					 urlRoot: '/course/',
-					 name:'course',	
+					 name:'course',
+           parse: function(response, options) {
+             response.id = response._id;
+             return response;
+           },	
 				});
 		
         return Model;
