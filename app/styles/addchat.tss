@@ -1,0 +1,67 @@
+".container": {
+	backgroundColor: "white"
+},
+
+"#chat_title_label": {
+  height: 20,
+  top: 10,
+  left: '3%',
+  width: 100
+},
+
+"#chat_title_text" : {
+  height: 20,
+  top: 10,
+  right: '3%', 
+  width: 200,
+  borderColor: '#000',
+  borderWidth: 1,
+},
+
+"#chat_content_label":{
+  height: 20,
+  top: 40,
+  left: '3%',
+  width: 100,
+},
+
+"#chat_content_text":{
+  height: 60,
+  top: 40,
+  right: '3%',
+  width: 200,
+  borderColor: '#000',
+  borderWidth: 1,
+  suppressReturn: false
+},
+
+"#question_content_label":{
+
+},
+"#question_title_text": {
+  height: '20dp',
+  top: 10,
+  right: '3%', 
+  width: 100
+},
+
+"#submit_button":{
+  bottom:10,
+  width: 100,
+  height: 10,
+}
+
+"#question_content_text":{
+
+},
+
+"#question_title_label": {
+  height: '20dp',
+  top: 10,
+  left: '3%',
+  width: 100
+},
+
+
+
+

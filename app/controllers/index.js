@@ -4,7 +4,7 @@ var settings = Alloy.createController('settings'),
     addclass = Alloy.createController('addclass'),
     user = Alloy.Models.user,
     updateFuncIndex = -1;
-
+Alloy.CFG.nav = $.nav;
 //$.course.fetch(options);
 function doClick(e) {  
     alert($.label.text);

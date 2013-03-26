@@ -1,8 +1,9 @@
 <Alloy>
-	<Window title="Your mom" class="container" id="mainContainer">
+	<Window class="container" id="mainContainer">
 		<TableView filterAttribute="title" id="topic_list">
+      
+  	  <SearchBar id="search" barColor="#000" showCancel="true" height="43" top="0" platform="ios" />
       <TableViewSection id="topic_section">
-  			<SearchBar id="search" barColor="#000" showCancel="true" height="43" top="0" platform="ios" />
   			<TableViewRow title="foo"/>
   			<TableViewRow title="bar"/>
   			<TableViewRow title="boo"/>

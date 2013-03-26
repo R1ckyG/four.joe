@@ -1,0 +1,9 @@
+<Alloy>
+  <Window id="question_window" title="Add a Question" class="container">
+	  <Label id="question_title_label" text="Title: "/>
+    <TextField id="question_title_text"/>
+   
+	  <Label id="question_content_label" text="Question: "/>
+    <TextField id="question_content_text"/>
+  </Window>
+</Alloy>

@@ -1,0 +1,36 @@
+".container": {
+	backgroundColor: "white"
+},
+
+"#question_title_label": {
+  height: 20,
+  top: 10,
+  left: '3%',
+  width: 100
+},
+
+"#question_title_text" : {
+  height: 20,
+  top: 10,
+  right: '3%', 
+  width: 200,
+  borderColor: '#000',
+  borderWidth: 1,
+},
+
+"#question_content_label":{
+  height: 20,
+  top: 40,
+  left: '3%',
+  width: 100,
+},
+
+"#question_content_text":{
+  height: 60,
+  top: 40,
+  right: '3%',
+  width: 200,
+  borderColor: '#000',
+  borderWidth: 1,
+  suppressReturn: false
+},

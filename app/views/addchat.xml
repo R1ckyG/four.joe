@@ -1,0 +1,10 @@
+<Alloy>
+  <Window id="chat_window" title="Add a Chat" class="container">
+	  <Label id="chat_title_label" text="Title: "/>
+    <TextField id="chat_title_text"/>
+   
+    <Label id="chat_content_label" text="Content: "/>
+    <TextArea id="chat_content_text"/>
+    <Button id="submit_button" onClick="submitQuestion" title="Add Chat"/>
+  </Window>
+</Alloy>
