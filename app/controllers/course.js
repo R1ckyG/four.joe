@@ -1,10 +1,12 @@
 var course,
+		course_id,
     addChat = Alloy.createController('addchat');
 
 exports.setClass = function(selectedCourse){
 	course = selectedCourse;
   $.mainContainer.title = course.get('title');
-	Ti.API.debug('Course name ' + selectedCourse.get('title'))
+	Ti.API.debug('Course name ' + selectedCourse.get('id'));
+	course_id = selectedCourse.get('id');
 };
 var addClassLabel =  Ti.UI.createLabel({
   color:'#900',
@@ -22,7 +24,8 @@ addClassRow.add(addClassLabel);
 
 addClassRow.addEventListener('click', function(){
   //alert('this is working!!!');
-  var view = addChat.getView();
+  addChat.setCourse(course);
+	var view = addChat.getView();
   Alloy.CFG.nav.open(view);  
 });
 
@@ -35,14 +38,14 @@ var updateDataTable = function(selectedCourse){
   for(var i = 0; i < selectedCourse.get('questions').length; i++){
    var question = selectedCourse.get('questions')[i],
        label = Ti.UI.createLabel({
-         text: question.get('title'), 
+         text: question['title'], 
          font: {fontSize: '28dp'}
        }),
        row = Ti.UI.createTableViewRow({
          height: '43'
        });
     row.add(label);
-    row.addEventListenerr('click', function(e){
+    row.addEventListener('click', function(e){
 
     });
     $.topic_list.appendRow(row);
@@ -50,14 +53,14 @@ var updateDataTable = function(selectedCourse){
   for(var i = 0; i < selectedCourse.get('chats').length; i++){
    var chat = selectedCourse.get('chats')[i],
        label = Ti.UI.createLabel({
-         text: chat.get('title'), 
+         text: chat['title'], 
          font: {fontSize: '28dp'}
        }),
        row = Ti.UI.createTableViewRow({
          height: '43'
        });
     row.add(label);
-    row.addEventListenerr('click', function(e){
+    row.addEventListener('click', function(e){
 
     });
     $.topic_list.appendRow(row);
@@ -66,8 +69,13 @@ var updateDataTable = function(selectedCourse){
 };
 
 $.mainContainer.addEventListener('focus', function(e) {
-  Ti.API.debug('On focus');
-  updateDataTable(course);
+  Ti.API.debug('On focus' + JSON.stringify(course)+ course.get('title'));
+  course = Alloy.Collections.courses.get(course_id);
+	try{
+    updateDataTable(course);
+  }catch(e){
+    Ti.API.error(e);
+  }
   $.mainContainer.title = course.get('title');
 });
 

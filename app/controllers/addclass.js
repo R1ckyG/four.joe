@@ -21,7 +21,8 @@ var setClass = function(e){
       options = {
         success: function(resObj, restText, options) {
           Ti.API.debug('Success updating user' + resText);
-        },
+					course.set('students', course.get('students').push(Alloy.Modelss.user));
+				},
         error: function(model, error, options) {
           Ti.API.error('Error updating user');
           Alloy.Updates.updateUserViews(Alloy.Models.user);
@@ -36,6 +37,7 @@ var setClass = function(e){
 		Alloy.Models.user.set({'courses': [course]}, options);
     Alloy.Updates.updateUserViews(Alloy.Models.user);
 	}
+
 };
 var options = {
 	success: function(resObj, resText, options) {
