@@ -36,7 +36,15 @@ var updateDataTable = function(selectedCourse){
   for(var i = 0; i < numOfRows; i++){
     $.topic_list.deleteRow(0);
   }
-  for(var i = 0; i < selectedCourse.get('questions').length; i++){
+  $.topic_list.addEventListener('click', function(e){
+      if(e.rowData.className === 'chatRow'){
+			  chat_controller.setChat(course, e.rowData.id);
+        var view = chat_controller.getView();
+        Alloy.CFG.nav.open(view); 
+  		}
+	});
+
+	for(var i = 0; i < selectedCourse.get('questions').length; i++){
    var question = selectedCourse.get('questions')[i],
        label = Ti.UI.createLabel({
          text: question['title'], 
@@ -71,11 +79,6 @@ var updateDataTable = function(selectedCourse){
        });
     row.add(label);
     row.id = i;
-    row.addEventListener('click', function(e){
-      chat_controller.setChat(course, e.rowData.id);
-      var view = chat.getView();
-      Alloy.CFG.nav.open(view); 
-    });
     $.topic_list.appendRow(row);
   }
   $.topic_list.appendRow(addClassRow);

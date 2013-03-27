@@ -4,4 +4,5 @@ exports.setChat = function(c, ch){
   course = c;
   chat = c.get('chats')[ch];
   Ti.API.debug('Course ' + course.get('title') + ' chat: ' + chat['title']); 
+	$.mainContainer.title = chat.title;
 }
