@@ -1,6 +1,7 @@
 var course,
 		course_id,
-    addChat = Alloy.createController('addchat');
+    addChat = Alloy.createController('addchat'),
+    chat_controller = Alloy.createController('chat');
 
 exports.setClass = function(selectedCourse){
 	course = selectedCourse;
@@ -39,14 +40,20 @@ var updateDataTable = function(selectedCourse){
    var question = selectedCourse.get('questions')[i],
        label = Ti.UI.createLabel({
          text: question['title'], 
-         font: {fontSize: '28dp'}
+         font: {fontSize: '28dp'},
+         textAlign: 'left',
+         left: 5
        }),
        row = Ti.UI.createTableViewRow({
-         height: '43'
+         height: '43',
+         className: 'questRow'
        });
     row.add(label);
+    row.id = i;
     row.addEventListener('click', function(e){
-
+      chat.setChat(course, i);
+      var view = chat.getView();
+      Alloy.CFG.nav.open(view); 
     });
     $.topic_list.appendRow(row);
   }
@@ -54,14 +61,20 @@ var updateDataTable = function(selectedCourse){
    var chat = selectedCourse.get('chats')[i],
        label = Ti.UI.createLabel({
          text: chat['title'], 
-         font: {fontSize: '28dp'}
+         font: {fontSize: '28dp'},
+         textAlign: 'left',
+         left: 5
        }),
        row = Ti.UI.createTableViewRow({
-         height: '43'
+         height: '43',
+         className: 'chatRow'
        });
     row.add(label);
+    row.id = i;
     row.addEventListener('click', function(e){
-
+      chat_controller.setChat(course, e.rowData.id);
+      var view = chat.getView();
+      Alloy.CFG.nav.open(view); 
     });
     $.topic_list.appendRow(row);
   }
