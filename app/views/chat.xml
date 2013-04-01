@@ -1,10 +1,9 @@
 <Alloy>
 	<Window title="chat" id="mainContainer" class="container">
-		<Label id="chat_topic"/>
+		<Label id="chat_topic" text="topic"/>
 		<Label id="users_online" text="chat (27 online)"/>
-		<TableView id="response_table">
-			
+		<TableView id="comment_table">
 		</TableView>
-		<TextArea id="comment_text"/>
+		<TextArea id="comment_text" />
 	</Window>
 </Alloy>

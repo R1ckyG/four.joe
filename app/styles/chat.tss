@@ -1,3 +1,25 @@
 ".container": {
-	backgroundColor: "white"
+	backgroundColor: "white",
+},
+
+"#chat_topic":{
+	top: 0,
+},
+
+"#users_online":{
+	top: 30,
+	width:'100%',
+	backgroundColor: "gray",
+	color: 'white',
+	textAlign: 'center'
+},
+
+
+"#comment_text":{
+	borderColor: '#000',
+	borderWidth:2,
+	height:30,
+	width:'100%',
+	bottom: '0%'
 }
+
