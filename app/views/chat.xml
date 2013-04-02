@@ -3,7 +3,10 @@
 		<Label id="chat_topic" text="topic"/>
 		<Label id="users_online" text="chat (27 online)"/>
 		<TableView id="comment_table">
+			<TableViewSection id="comment_section">
+			
+			</TableViewSection>
 		</TableView>
-		<TextArea id="comment_text" />
+		<TextArea id="comment_text" /><Button id="comment_button" text="Submit"/>
 	</Window>
 </Alloy>

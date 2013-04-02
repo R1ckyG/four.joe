@@ -4,6 +4,8 @@
 
 "#chat_topic":{
 	top: 0,
+	textAlign: 'left',
+	left: 5
 },
 
 "#users_online":{
@@ -14,12 +16,23 @@
 	textAlign: 'center'
 },
 
+'#comment_table':{
+	top:54
+},
 
 "#comment_text":{
 	borderColor: '#000',
 	borderWidth:2,
 	height:30,
-	width:'100%',
-	bottom: '0%'
+	width:'70%',
+	bottom: '0%',
+	left: '0%'
+}
+
+'#comment_button':{
+	bottom: '0%',
+	height: 30,
+	width: '25%',
+	right: '0%'
 }
 

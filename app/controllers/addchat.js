@@ -8,10 +8,13 @@ exports.setCourse = function(c){
 var submitQuestion = function(e){
   Ti.API.debug('adding question ' + $.chat_title_text.value + ' Question: ' + $.chat_content_text.value);
 	var chats = course.get('chats'),
+			birth = new Date(),
 			chat = {
 				title: $.chat_title_text.value,
 				content: $.chat_content_text.value,
-				user: Alloy.Models.user.get('firstname')
+				user: Alloy.Models.user.get('firstname'),
+				comments: [],
+				created: birth.toString()
 			};
 	chats.push(chat);
 	//course.save({'chats':chats});
