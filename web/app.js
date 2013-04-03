@@ -195,6 +195,17 @@ app.post('/login', function(req, res){
 		});
 });
 
+app.put('/api/v1/course/:id', function(req, res){
+  console.log('Request body', req.body);
+  courseM.findById(req.params.id, function(err, doc){
+    if(err){
+
+    }else{
+
+    }
+  });
+}
+
 app.get('/api/v1/get_user_info', function(req, res){
 
 });

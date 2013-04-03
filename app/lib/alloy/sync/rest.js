@@ -50,11 +50,11 @@ module.exports.sync = function(method, model, options) {
       Ti.API.debug('Performing rest.js delete');
       makeHTTPReqeust('POST', call_url + '/destroy/' + id, null, callback);
       break;
-
     // This case is called by the Model.save and Collection.create methods
     // to update a model if they have IDs set.
     case 'update':
       Ti.API.debug('Performing rest.js update');
+      makeHTTPRequest('PUT', BASE_URL + model.urlRoot + model.get('id'), payload, callback);
       // Twitter does not have a call to change a tweet.
       error = 'ERROR: Update method is not implemented!';         
       break;  
