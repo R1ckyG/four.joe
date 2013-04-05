@@ -19,7 +19,8 @@ var makeHTTPRequest = function(method, url, post_data, callback){
 
 // Override the Backbone.sync method with the following
 module.exports.sync = function(method, model, options) {
-  var payload = model.toJSON();
+  var payload =model.toJSON();
+  Ti.API.error(payload);
   //options = options || {};
   var error;
 
@@ -54,7 +55,14 @@ module.exports.sync = function(method, model, options) {
     // to update a model if they have IDs set.
     case 'update':
       Ti.API.debug('Performing rest.js update');
-      makeHTTPRequest('PUT', BASE_URL + model.urlRoot + model.get('id'), payload, callback);
+      if(model.name === 'course'){
+        payload = {
+          'data': JSON.stringify(model)
+        };
+        makeHTTPRequest('PUT', BASE_URL + model.urlRoot + model.get('id'), payload, callback);
+      }else{
+        makeHTTPRequest('PUT', BASE_URL + model.urlRoot + model.get('id'), payload, callback);
+      }
       // Twitter does not have a call to change a tweet.
       error = 'ERROR: Update method is not implemented!';         
       break;  

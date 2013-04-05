@@ -196,15 +196,24 @@ app.post('/login', function(req, res){
 });
 
 app.put('/api/v1/course/:id', function(req, res){
-  console.log('Request body', req.body);
-  courseM.findById(req.params.id, function(err, doc){
+  console.log('Request body', req.body + '\n\n\n' + req.body['data']);
+  var obj = JSON.parse(req.body['data']),
+      options = {
+        upsert: true,
+      },
+      updates = {
+        'chats': obj['chats'],
+        'students': obj['students'],
+        'questions': obj['questions'],
+      };
+  courseM.findAndUpdate({'_id': req.params.id}, updates, options, function(err, doc){
     if(err){
-
+      res.send(403, err);
     }else{
-
+      res.send(200, 'yay');
     }
   });
-}
+});
 
 app.get('/api/v1/get_user_info', function(req, res){
 
