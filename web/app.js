@@ -17,7 +17,11 @@ var User = new Schema({
 var userM = mongoose.model('User', User);
 
 var Comment = new Schema({
-	user: Schema.ObjectId,
+	user:	{
+		id: Schema.Types.ObjectId,
+		firstname: String,
+		lastname: String
+	},
 	time: Date, 
 	content: {type:String, required: true, trim:true}
 });
@@ -206,7 +210,7 @@ app.put('/api/v1/course/:id', function(req, res){
         'students': obj['students'],
         'questions': obj['questions'],
       };
-  courseM.findAndUpdate({'_id': req.params.id}, updates, options, function(err, doc){
+  courseM.findOneAndUpdate({'_id': req.params.id}, updates, options, function(err, doc){
     if(err){
       res.send(403, err);
     }else{
@@ -327,7 +331,7 @@ app.get('/api/v1/courses/', function(req, res){
 			console.log('Error retrieving courses');
 			res.send(403, message);
 		}else{
-			console.log('getting courses: ', docs);
+			console.log('getting courses: ', JSON.stringify(docs));
 			res.send(200, docs);
 		}
 	});

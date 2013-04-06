@@ -7,6 +7,7 @@ exports.setChat = function(c, ch){
 							 + ' chat: ' + chat['title']); 
 	$.mainContainer.title = chat.title;
 	$.chat_topic.text = chat.content;
+	updateView();
 };
 
 var updateView = function(){
@@ -17,7 +18,7 @@ var updateView = function(){
 	for(var i = 0; i < chat['comments'].length; i++){
 	  var text = chat['comments'][i],
 				label = Ti.UI.createLabel({
-					text: text['text'],
+					text: text['content'],
 					textAlign: 'left',
 					font: {fontSize: '14dp'},
 					left:5
@@ -25,6 +26,7 @@ var updateView = function(){
 				row = Ti.UI.createTableViewRow({
 					height: '43',
 				});
+				if(!text['content'])continue;
 				row.add(label);
 				row.info = text;
 		$.comment_table.appendRow(row);
@@ -36,8 +38,13 @@ $.comment_button.addEventListener('click', function(e){
 	var text = $.comment_text.value,
 			time = new Date(),
 			comment = {
-				'text': text,
-				'created': time.toString()
+				'content': text,
+				'time': time.toString(),
+				'user': {
+					id: Alloy.Models.user.get('id'),
+					firstname: Alloy.Models.user.get('firstname'),
+					lastname: Alloy.Models.user.get('lastname')
+				}
 			};
 	//TODO Validate text entered
 	chat['comments'].push(comment);
