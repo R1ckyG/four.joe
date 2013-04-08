@@ -1,7 +1,12 @@
 var express = require('express'),
 		app = express(),
 		mongoose = require('mongoose'),
-	  Schema = mongoose.Schema;
+	  Schema = mongoose.Schema,
+		userStub = {
+		  id: Schema.Types.ObjectId,
+		  firstname: {type:String, trim:true},
+		  lastname: {type:String, trim:true}
+	  };
 
 var User = new Schema({
 	first_name: {type:String, required: true, trim:true},
@@ -17,11 +22,7 @@ var User = new Schema({
 var userM = mongoose.model('User', User);
 
 var Comment = new Schema({
-	user:	{
-		id: Schema.Types.ObjectId,
-		firstname: String,
-		lastname: String
-	},
+	user:userStub,
 	time: Date, 
 	content: {type:String, required: true, trim:true}
 });
@@ -29,7 +30,7 @@ var commentM = mongoose.model('Comment', Comment);
 
 var Answer = new Schema({
 	content: {type:String, required: true, trim:true},
-	user: Schema.ObjectId,
+	user: userStub,
 	time: Date,
 	points: {type:Number, required:true},
 	text: {type:String, required: true, trim:true},
@@ -39,7 +40,7 @@ var answerM = mongoose.model('Answer', Answer);
 
 var Chat = new Schema({
 	title: {type:String, required: true, trim:true},
-	user: {type:Schema.ObjectId, required:true},
+	user: userStub,
 	content: {type:String, required: true, trim:true},
 	comments: [Comment],
 	time: {type:Date, required: true}
@@ -48,7 +49,7 @@ var chatM = mongoose.model('Chat', Chat);
 
 var Question = new Schema({
 	title: {type:String, required: true, trim:true},
-	user: Schema.ObjectId,
+	user: userStub,
 	text: {type:String, required: true, trim:true},
 	answers: [Answer],
 	points: Number,

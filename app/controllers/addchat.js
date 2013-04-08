@@ -14,9 +14,14 @@ var submitQuestion = function(e){
 				content: $.chat_content_text.value,
 				user: Alloy.Models.user.get('firstname'),
 				comments: [],
-				created: birth.toString()
+				time: birth.toString(),
+				user: {
+				  id: Alloy.Models.user.get('id'),
+					firstname: Alloy.Models.user.get('firstname'),
+					lastname: Alloy.Models.user.get('lastname')
+				}
 			};
 	chats.push(chat);
-	//course.save({'chats':chats});
+	course.save({'chats':chats});
 }
 

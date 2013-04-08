@@ -1,7 +1,9 @@
 var course,
 		course_id,
     addChat = Alloy.createController('addchat'),
-    chat_controller = Alloy.createController('chat');
+		addQuestion = Alloy.createController('addquestion'),
+    chat_controller = Alloy.createController('chat'),
+		question_controller = Alloy.createController('question');
 
 exports.setClass = function(selectedCourse){
 	course = selectedCourse;
@@ -9,6 +11,7 @@ exports.setClass = function(selectedCourse){
 	Ti.API.debug('Course name ' + selectedCourse.get('id'));
 	course_id = selectedCourse.get('id');
 };
+
 var addClassLabel =  Ti.UI.createLabel({
   color:'#900',
   font:{fontsize:24},
@@ -16,17 +19,34 @@ var addClassLabel =  Ti.UI.createLabel({
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   width:'auto', height:'auto',
 });
-
 var addClassRow = Ti.UI.createTableViewRow({
   className:'add_class',
   touchEnabled: true,
 });
 addClassRow.add(addClassLabel);
-
 addClassRow.addEventListener('click', function(){
   //alert('this is working!!!');
   addChat.setCourse(course);
 	var view = addChat.getView();
+  Alloy.CFG.nav.open(view);  
+});
+
+var addQuestLabel =  Ti.UI.createLabel({
+  color:'#900',
+  font:{fontsize:24},
+  text:'Add question',
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  width:'auto', height:'auto',
+});
+var addQuestRow = Ti.UI.createTableViewRow({
+  className:'add_class',
+  touchEnabled: true,
+});
+addQuestRow.add(addQuestLabel);
+addQuestRow.addEventListener('click', function(){
+  //alert('this is working!!!');
+  addQuestion.setCourse(course);
+	var view = addQuestion.getView();
   Alloy.CFG.nav.open(view);  
 });
 
@@ -41,7 +61,11 @@ var updateDataTable = function(selectedCourse){
 			  chat_controller.setChat(course, e.rowData.id);
         var view = chat_controller.getView();
         Alloy.CFG.nav.open(view); 
-  		}
+  		}else if(e.rowData.className === 'questRow'){
+				question_controller.setQuestion(course, e.rowData.id);
+				var view = question_controller.getView();
+				Alloy.CFG.nav.open(view);
+			}	
 	});
 
 	for(var i = 0; i < selectedCourse.get('questions').length; i++){
@@ -58,11 +82,6 @@ var updateDataTable = function(selectedCourse){
        });
     row.add(label);
     row.id = i;
-    row.addEventListener('click', function(e){
-      chat.setChat(course, i);
-      var view = chat.getView();
-      Alloy.CFG.nav.open(view); 
-    });
     $.topic_list.appendRow(row);
   }
   for(var i = 0; i < selectedCourse.get('chats').length; i++){
@@ -82,6 +101,7 @@ var updateDataTable = function(selectedCourse){
     $.topic_list.appendRow(row);
   }
   $.topic_list.appendRow(addClassRow);
+	$.topic_list.appendRow(addQuestRow);
 };
 
 $.mainContainer.addEventListener('focus', function(e) {
