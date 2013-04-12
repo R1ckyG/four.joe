@@ -9,8 +9,8 @@ var express = require('express'),
 	  };
 
 var User = new Schema({
-	first_name: {type:String, required: true, trim:true},
-	last_name: {type:String, required: true, trim:true},
+	firstname: {type:String, required: true, trim:true},
+	lastname: {type:String, required: true, trim:true},
 	email: {type:String, required: true, trim:true},
 	password: {type:String, required: true, trim:true},
 	school: {type:String, required: true, trim:true},
@@ -85,8 +85,8 @@ app.use(express.bodyParser());
 app.post('/signup', function(req, res){
 	console.log('new signup ' + req.body['username']);
   var args = {
-			first_name: req.body['first-name'],
-			last_name: req.body['last-name'],
+			firstname: req.body['first-name'],
+			lastname: req.body['last-name'],
 			email: req.body['email'],
       username: req.body['username'],
 			password: req.body['pass'],
@@ -132,8 +132,8 @@ app.get('/api/v1/user/:id', function(req, res){
 app.post('/api/v1/user/', function(req, res){
 	console.log('new signup ' + JSON.stringify(req.body));
   var args = {
-			first_name: req.body['firstname'],
-			last_name: req.body['lastname'],
+			firstname: req.body['firstname'],
+			lastname: req.body['lastname'],
 			email: req.body['email'],
       username: req.body['username'],
 			password: req.body['password'],
@@ -366,6 +366,18 @@ app.get('/api/v1/get_schools', function(req, res){
       res.send(200, docs);
     }
   });
+});
+
+app.post('/api/v1/signin', function(req, res){
+  userM.findOne(
+    {email:req.body.email, password:req.body.password},
+    function(err, doc){
+      if(err){
+        res.send(403, {reason:'you fucked up son'});
+      }else{
+        res.send(200, doc);
+      }
+    });
 });
 
 app.get('/api/v1/get_courses', function(req, res){

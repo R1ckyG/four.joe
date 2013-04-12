@@ -1,0 +1,28 @@
+".container": {
+	backgroundColor: "white"
+}
+
+"#comment_text":{
+	bottom:5,
+	width: '80%',
+	height: 40,
+	left:5
+}
+
+"#answer_text_label":{
+	height: 40,
+	top:5,
+	left: 2,
+	width: '98%'
+}
+
+"#comment_table":{
+	top: 50
+}
+
+"#comment_button":{
+	bottom:5,
+	width: '20%',
+	height: 40,
+	right: 5
+}

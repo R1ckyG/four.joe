@@ -1,0 +1,35 @@
+".container": {
+	backgroundColor: "white"
+},
+
+"#firstNameLabel": {
+	height:'30dp',
+},
+
+"#firstLabel":{
+	top:10,
+	left: '3%',
+	height:30,
+	width:100,
+},
+
+"#email":{
+	top: 10,
+	height: 30,
+	right: '3%',
+	width:200
+},
+
+"#lastLabel":{
+	top:40,
+	left: '3%',
+	height:30,
+	width:100,
+},
+
+"#password":{
+	top: 45,
+	height: 30,
+	right: '3%',
+	width: 200
+}

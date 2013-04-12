@@ -41,10 +41,13 @@ var onSignUp = function(e){
   var options = {
     success: function(resObj, resText, options){
       Ti.API.debug('Setting id ' + JSON.stringify(resObj['_id']) + JSON.stringify( Alloy.Models.user));
+      var home = Alloy.createController('home');
+      home.getView().open();
     },
     error: function(model, error, options){
       Alloy.Models.user.set('_id', error);
       Ti.API.debug(error + ': ' + JSON.stringify( Alloy.Models.user));
+      //TODO Error handling for signup
     },
   };
   Alloy.Models.user.save(ud, options);

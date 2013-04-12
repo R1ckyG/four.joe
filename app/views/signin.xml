@@ -1,0 +1,10 @@
+<Alloy>
+	<Window class="container">
+		<Label id="firstLabel" text="Email:"/>
+		<TextField id="email" class="border"/>
+	
+		<Label id="lastLabel" text="password:"/>
+		<TextField id="password" class="border"/>
+      <Button id="submit" title="Submit"/>
+   </Window>
+</Alloy>

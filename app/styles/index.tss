@@ -1,32 +1,24 @@
 ".container": {
 	backgroundColor:"white"
 },
-"Label": {
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	color: "#000"
-}, 
-/*Table Rows*/
-"#course_list":{
-  top:'30%',
-  height: '180dp',
+
+"#signup":{
+	top:10,
+	left: '50%',
+	height:30,
+	width:100,
 },
-".course_name":{
-  left: '8dp',
-  font:{
-    fontSize: '32dp',
-  }
+
+"#signin":{
+	top:40,
+	left: '50%',
+	height:30,
+	width:100,
 },
-".course_row":{
-  height:'50dp',
-  layout: 'composite',
+
+"#continueb":{
+	top:80,
+	left: '50%',
+	height:30,
+	width:100,
 },
-".messages":{
-  right: '8dp',
-  font:{
-    fontSize: '28dp',
-  }
-},
-"#menu_items":{
-  top:'80%',
-}

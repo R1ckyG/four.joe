@@ -1,0 +1,10 @@
+<Alloy>
+	<Window title="Question" id="mainContainer" class="container">
+		<Label id="question_text_label"/>
+		<TableView id="answer_table">
+			<TableViewSection id="answer_section">
+			</TableViewSection>
+		</TableView>
+		<TextArea id="comment_text"/><Button id="comment_button" title="Submit"/>
+	</Window>
+</Alloy>
