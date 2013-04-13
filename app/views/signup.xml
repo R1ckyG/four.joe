@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container">
+	<Window title="Sign Up" class="container">
 		<Label id="firstLabel" text="First Name:"/>
 		<TextField id="firstname" class="border"/>
 	
@@ -8,9 +8,6 @@
 
 		<Label id="emailLabel" text="Email:"/>
 		<TextField id="email" class="border"/>
-	
-		<Label id="userLabel" text="Username:"/>
-		<TextField id="username" class="border"/>
 	
 		<Label id="passLabel" text="Password:"/>
 		<TextField id="password" class="border"/>

@@ -1,11 +1,11 @@
 ".container": {
-	backgroundColor: "white"
+	backgroundColor: "#E9E9E9"
 },
 
 ".border":{
 	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-	borderWidth: 1,
-	borderRadius: 4,
+   borderWidth: 1,
+   borderRadius: 4
 }
 
 "#firstNameLabel": {
@@ -51,41 +51,34 @@
 	top: 80,
 	height: 30,
 	right: '3%',
-	width:200
+	width:200,
 },
 
-"#userLabel":{
+"#passLabel":{
 	top:115,
 	left: '3%',
 	height:30,
 	width:100,
 },
 
-"#username":{
+"#password":{
 	top: 115,
 	height: 30,
 	right: '3%',
-	width:200
-},
-
-"#passLabel":{
-	top:150,
-	left: '3%',
-	height:30,
-	width:100,
-},
-
-"#password":{
-	top: 150,
-	height: 30,
-	right: '3%',
-	width:200
+	width:200,
+   passwordMask: true
 },
 
 '#schools':{
-	top:185,
+	top:'40%',
 	useSpinner: true,
 },
+
+"#submit":{
+	top:'91%',
+	width: '100%',
+	title: 'Submit'
+}
 
 "#schoolColumn":{
 

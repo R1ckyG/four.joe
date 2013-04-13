@@ -88,7 +88,6 @@ app.post('/signup', function(req, res){
 			firstname: req.body['first-name'],
 			lastname: req.body['last-name'],
 			email: req.body['email'],
-      username: req.body['username'],
 			password: req.body['pass'],
 			school: req.body['school']['_id'],
 			points: 0
@@ -135,14 +134,13 @@ app.post('/api/v1/user/', function(req, res){
 			firstname: req.body['firstname'],
 			lastname: req.body['lastname'],
 			email: req.body['email'],
-      username: req.body['username'],
 			password: req.body['password'],
 			school: req.body['school'],
 			points: 0
 	};
   	
   userM.find(
-		{$or: [{email:req.body['email']}, {username:req.body['username']}]}, 
+		{email:req.body['email']}, 
 		function(err, docs){	
   		//If email user exist
   		if(docs.length || err){
@@ -161,7 +159,7 @@ app.post('/api/v1/user/', function(req, res){
   				  res.send(403,  {
               'errors':[{
                 'reason':'invalid',
-                'message':'doc exist'
+                'message':'Could not save'
               }]
             });	
   				  console.log(err.toString());

@@ -4,11 +4,11 @@ var homec = Alloy.createController('home'),
 
 $.index.open();
 $.signup.addEventListener('click', function(){
-  signupc.getView().open();
+ $.nav.open(signupc.getView());
 });
 
 $.signin.addEventListener('click', function(){
-  signinc.getView().open();
+  $.nav.open(signinc.getView());
 });
 
 $.continueb.addEventListener('click', function(){

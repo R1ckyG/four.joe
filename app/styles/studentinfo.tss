@@ -7,11 +7,17 @@
 	layout:"horizontal",
 },
 
+".border":{
+	borderWidth: 1,
+	borderRadius: 2,
+	borderColor: '#000'
+}
+
 "#first_name":{
 	left: "8dp",
   top: '50%',
 	font: {
-		fontSize: 18,
+		fontSize: 24,
 	}
 },
 
@@ -19,17 +25,17 @@
 	left: "5dp",
 	top: '50%',
 	font: {
-		fontSize: 18,
+		fontSize: 24,
 	}
 },
 
 "#university":{
-  left:"70dp",
+  left: '80%',
   top:'50%',
 },
 
 "#grad_year":{
-  left:'5dp',
+  left: 5,
   top:'50%'
 }
 

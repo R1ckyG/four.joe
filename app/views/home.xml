@@ -1,26 +1,21 @@
 <Alloy>
-  
   <Window id="index" class="container">
-  <NavigationGroup id="nav" platform="ios,mobileweb" backgroundColor="white">
-     <Window id="profileWin" title="My Profile">
+  <NavigationGroup id="nav" platform="ios,mobileweb" class="container">
+     <Window id="profileWin" title="My Profile" class="container">
       <Require src="studentinfo"/>
-      <TableView filterAttribute="title" id="course_list" >
+      <TableView filterAttribute="title" headerTitle="My Courses" class="border" id="course_list" >
         <TableViewSection id="course_section">
-				  <TableViewRow class="course_row" onClick="openClass">
-            <Label class="course_name" text="title"/>
-            <Label class="messages" text="(4)"/>
-          </TableViewRow>
-				</TableViewSection>
+		  </TableViewSection>
       </TableView>
-      <TableView id="menu_items">
+      <TableView id="menu_items" class="border">
         <TableViewRow id="settings" class="course_row" onClick="openSettings">
-          <Label id="settings_label" text='Settings'/>
+          <Label id="settings_label" left="3%" fontSize="24" text='Settings'/>
         </TableViewRow>
         <TableViewRow id="stats" class="course_row" onClick="openStats">
-          <Label id="stats_label" text='My Stats'/>
+          <Label id="stats_label" left="3%" fontSize="24" text='My Stats'/>
         </TableViewRow>
         <TableViewRow id="debug" class="course_row" onClick="debugClick">
-          <Label id="stats_label" text='Debug'/>
+          <Label id="stats_label" left="3%" fontSize="24" text='Debug'/>
         </TableViewRow>
       </TableView>
      </Window>

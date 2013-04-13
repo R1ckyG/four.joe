@@ -78,8 +78,10 @@ var updateDataTable = function(selectedCourse){
        }),
        row = Ti.UI.createTableViewRow({
          height: '43',
-         className: 'questRow'
-       });
+         className: 'questRow',
+       	 title: question['title'],
+				 color:'white'
+			 });
     row.add(label);
     row.id = i;
     $.topic_list.appendRow(row);

@@ -1,7 +1,9 @@
 var schoolCollection = Backbone.Collection.extend({}),
-    user = Alloy.Models.user;
-var schools;
+    user = Alloy.Models.user,
+    schools;
+
 Ti.API.debug('Users: ' + JSON.stringify(user));
+
 var addSchools = function(e){
 	Ti.API.debug(this.responseText);
   schools = new schoolCollection(JSON.parse(this.responseText));	
@@ -34,7 +36,6 @@ var onSignUp = function(e){
 				firstname:$.firstname.value,
 				lastname:$.lastname.value,
 				email:$.email.value,
-				username:$.username.value,
 				password:$.password.value,
 				school: selectedSchool.get('_id')
 	}

@@ -81,12 +81,14 @@ var updateUserCourses = function(courses) {
       left: '8dp',
       font:{fontSize:'32dp'}
     });
-    var message_label = Ti.UI.createLabel({
-      text: '(N/A)',
+    var numTopics = course.get('chats').length + course.get('questions').length;
+		var message_label = Ti.UI.createLabel({
+      text: '('+ numTopics +')',
       className: 'messages',
       right:'8dp',
-      font:{fontSize:'28dp'}
-    });
+      font:{fontSize:'28dp'},
+    	color: '#3299BB'
+		});
     var row = Ti.UI.createTableViewRow({
       className:'course_row',
       height: '50dp',

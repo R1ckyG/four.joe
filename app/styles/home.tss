@@ -1,6 +1,13 @@
 ".container": {
-	backgroundColor:"white"
+	backgroundColor:"#E9E9E9"
 },
+
+".border":{
+	borderWidth: 1,
+	borderRadius: 2,
+	borderColor: '#000'
+}
+
 "Label": {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
@@ -8,8 +15,9 @@
 }, 
 /*Table Rows*/
 "#course_list":{
-  top:'30%',
+  top:'25%',
   height: '180dp',
+	backgroundColor: 'white'
 },
 ".course_name":{
   left: '8dp',
@@ -25,8 +33,13 @@
   right: '8dp',
   font:{
     fontSize: '28dp',
-  }
+  	fontColor: '#3299BB'
+	}
 },
 "#menu_items":{
-  top:'80%',
+  top:'77%',
+	backgroundColor: 'white',
+	height: '24%',
+	scrollable: false
+
 }

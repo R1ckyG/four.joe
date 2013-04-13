@@ -3,8 +3,8 @@
 		<Label id="firstLabel" text="Email:"/>
 		<TextField id="email" class="border"/>
 	
-		<Label id="lastLabel" text="password:"/>
+		<Label id="lastLabel" text="Password:"/>
 		<TextField id="password" class="border"/>
-      <Button id="submit" title="Submit"/>
+    <Button id="submit" title="Submit"/>
    </Window>
 </Alloy>

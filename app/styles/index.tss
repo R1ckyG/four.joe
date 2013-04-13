@@ -1,24 +1,21 @@
 ".container": {
-	backgroundColor:"white"
+	backgroundColor:"#E9E9E9"
 },
 
 "#signup":{
-	top:10,
-	left: '50%',
-	height:30,
-	width:100,
+	top:'5%',
+	height:'15%',
+	width:'60%',
 },
 
 "#signin":{
-	top:40,
-	left: '50%',
-	height:30,
-	width:100,
+	top:'25%',
+	height:'15%',
+	width:'60%',
 },
 
 "#continueb":{
-	top:80,
-	left: '50%',
-	height:30,
-	width:100,
+	top:'45%',
+	height:'15%',
+	width:'60%',
 },
