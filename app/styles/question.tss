@@ -1,23 +1,42 @@
 ".container": {
-	backgroundColor: "white",
+	backgroundColor: "#E9E9E9",
 }
 
 "#comment_text":{
-	bottom:5,
 	width: '80%',
 	height: 40,
-	left:5
 }
 
 "#question_text_label":{
-	height: 40,
+	height: 80,
 	top:5,
+	left: '18%',
+	width: '80%',
+	backgroundColor: 'white',
+	borderWidth: 1,
+	borderRadius: 2,
+	borderColor: '#000'
+}
+
+"#question_icon":{
+	color: '#3299BB',
+	font:{
+	 fontStyle: 'italic',
+	 fontWeight: 'bold',
+	 fontSize: '40dp',
+	},
+	top: 5,
 	left: 2,
-	width: '98%'
+	width: '20%'
 }
 
 "#answer_table":{
-	top: 50
+	top: 100,
+	borderRadius: 2,
+	borderWidth: 1,
+	borderColor: '#000',
+	height: 260,
+	width: '95%'
 }
 
 "#comment_button":{

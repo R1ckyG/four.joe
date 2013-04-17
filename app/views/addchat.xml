@@ -5,6 +5,6 @@
    
     <Label id="chat_content_label" text="Content: "/>
     <TextArea id="chat_content_text"/>
-    <Button id="submit_button" onClick="submitQuestion" title="Add Chat"/>
+    <Button id="submit_button" onClick="submitQuestion" title="Submit"/>
   </Window>
 </Alloy>

@@ -8,8 +8,45 @@ exports.setQuestion = function(c, q){
 	updateView();
 };
 
-$.comment_button.addEventListener('click', function(){
-  var text = $.comment_text.value;
+var createAccordion = function(answer){
+	var aView = Ti.UI.createView({
+		borderColor: '#000',
+		borderWidth: 1
+	});
+	var anim = Ti.UI.createAnimation({
+		height: 10,
+		duration:200
+	});
+	var	label = Ti.UI.createLabel({
+					text: answer['content'],
+					font: {fontSize:'24dp'},
+					left: 5,
+					height: 'auto'
+	});
+  return aView;	
+};
+
+var tf = Ti.UI.createTextField({
+	width: '100%',
+	height: 32,
+	width: 200,
+	backgroundColor:'white',
+	font:{fontSize: 13},
+	borderRadius: 4,
+	borderWidth: 1,
+	borderColor: '#000',
+	paddingLeft: 10
+});
+
+var cButton = Ti.UI.createButton({
+	title: 'Submit',
+	width: 80,
+	height: 32,
+});
+
+cButton.addEventListener('click', function(){
+  var text = tf.value;
+	tf.value = '';
 	Ti.API.debug('Adding text: ' + text);
 	//TODO Validate user signed in
 	if(!text)alert('No input');
@@ -30,24 +67,19 @@ $.comment_button.addEventListener('click', function(){
 	course.save();
 });
 
-var createAccordion = function(answer){
-	var aView = Ti.UI.createView({
-		borderColor: '#000',
-		borderWidth: 1
-	});
-	var anim = Ti.UI.createAnimation({
-		height: 10,
-		duration:200
-	});
-	var	label = Ti.UI.createLabel({
-					text: answer['content'],
-					font: {fontSize:'24dp'},
-					left: 5,
-					height: 'auto'
-	});
-  return aView;	
-};
+var textField = Ti.UI.createTextField({
+	color:'#336699',
+	value:'Answer Question',
+	height:35,
+	width:300,
+	bottom: 5,
+	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	keyboardToolbar:[tf, cButton],
+	keyboardToolbarColor: '#999',	
+	keyboardToolbarHeight: 40
+});
 
+$.mainContainer.add(textField);
 var addAnswerField = function(){
 	var submit = Ti.UI.createButton({
 		//style : Ti.UI.iPhone.SystemButtonStyle.DONE,
@@ -93,16 +125,28 @@ var updateView = function(){
 				row = Ti.UI.createTableViewRow({
 					className: 'answerRow'
 				}),
-				label;
+				label, aView, icon;
+		icon = Ti.UI.createLabel({
+			text: 'A:',
+			font:{
+				fontSize: '28dp',
+				fontFamily: 'Helvetica',
+				fontStyle: 'italic',
+				fontWeight: 'bold'
+			},
+			color: '#3299BB',
+			left: 5
+		});
 	  label = Ti.UI.createLabel({
 				text: answer['content'],
-				font: {fontSize:'24dp'},
-				left: 5,
-				borderColor: '#000',
-				borderWidth: 1
+				font: {fontSize:'18dp'},
+				left: '11%',
 		  });
-    var view = createAccordion(answer);		
-		row.add(label);
+		aView = Ti.UI.createView({height:40});
+		aView.add(icon);
+		aView.add(label);
+    //var view = createAccordion(answer);		
+		row.add(aView);
 		row.id = i;
 	  row.expanded = false;	
 		row.answer = answer;

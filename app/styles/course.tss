@@ -1,6 +1,13 @@
 ".container": {
 	backgroundColor: "white"
 },
-"#toolbar":{
-	bottom:"0%",
+
+'#topic_list':{
+	top: '0%'
+},
+
+".border": { 
+	borderWidth: 1,
+	borderRadius: 2,
+	borderColor: '#000'
 }

@@ -1,20 +1,10 @@
 <Alloy>
 	<Window class="container" id="mainContainer">
-		<TableView filterAttribute="title" id="topic_list">
+		<TableView filterAttribute="title" class="border" id="topic_list">
       
   	  <SearchBar id="search" barColor="#000" showCancel="true" height="43" top="0" platform="ios" />
       <TableViewSection id="topic_section">
-  			<TableViewRow title="foo"/>
-  			<TableViewRow title="bar"/>
-  			<TableViewRow title="boo"/>
       </TableViewSection>
 		</TableView>
-		<Toolbar id="toolbar" platform="ios">
-			<Items>
-				<Button>????</Button>
-				<FlexSpace/>
-				<Button>Home</Button>
-			</Items>
-		</Toolbar>
 	</Window>
 </Alloy>

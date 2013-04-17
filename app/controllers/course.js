@@ -14,14 +14,16 @@ exports.setClass = function(selectedCourse){
 
 var addClassLabel =  Ti.UI.createLabel({
   color:'#900',
-  font:{fontsize:24},
-  text:'Add a chat/question',
+  font:{fontsize:'28dp'},
+  text:'Add Chat',
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   width:'auto', height:'auto',
+	left:'3%'
 });
 var addClassRow = Ti.UI.createTableViewRow({
   className:'add_class',
   touchEnabled: true,
+	height: 43
 });
 addClassRow.add(addClassLabel);
 addClassRow.addEventListener('click', function(){
@@ -33,14 +35,16 @@ addClassRow.addEventListener('click', function(){
 
 var addQuestLabel =  Ti.UI.createLabel({
   color:'#900',
-  font:{fontsize:24},
-  text:'Add question',
+  font:{fontsize:'28dp'},
+  text:'Add Question',
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   width:'auto', height:'auto',
+	left:'3%'
 });
 var addQuestRow = Ti.UI.createTableViewRow({
   className:'add_class',
   touchEnabled: true,
+	height: '43'
 });
 addQuestRow.add(addQuestLabel);
 addQuestRow.addEventListener('click', function(){
@@ -70,9 +74,21 @@ var updateDataTable = function(selectedCourse){
 
 	for(var i = 0; i < selectedCourse.get('questions').length; i++){
    var question = selectedCourse.get('questions')[i],
-       label = Ti.UI.createLabel({
+       aView = Ti.UI.createView({layout:'horizontal'}),
+			 icon = Ti.UI.createLabel({
+				 text: 'Q:',
+				 font:{
+				 	 fontSize: '28dp',
+				 	 fontFamily: 'Helvetica',
+					 fontWeight: 'bold',
+				 	 fontStyle: 'italic'
+				 },
+				 left: 5,
+    	   color: '#3299BB'
+			 }),
+			 label = Ti.UI.createLabel({
          text: question['title'], 
-         font: {fontSize: '28dp'},
+         font: {fontSize: '24dp'},
          textAlign: 'left',
          left: 5
        }),
@@ -80,9 +96,12 @@ var updateDataTable = function(selectedCourse){
          height: '43',
          className: 'questRow',
        	 title: question['title'],
-				 color:'white'
+				 color:'white',
+			 	 font:{fontSize:'0dp'}
 			 });
-    row.add(label);
+		aView.add(icon);
+		aView.add(label);
+    row.add(aView);
     row.id = i;
     $.topic_list.appendRow(row);
   }
@@ -90,14 +109,22 @@ var updateDataTable = function(selectedCourse){
    var chat = selectedCourse.get('chats')[i],
        label = Ti.UI.createLabel({
          text: chat['title'], 
-         font: {fontSize: '28dp'},
+         font: {fontSize: '24dp'},
          textAlign: 'left',
          left: 5
        }),
        row = Ti.UI.createTableViewRow({
          height: '43',
-         className: 'chatRow'
-       });
+         title: chat['title'], 
+				 className: 'chatRow',
+       	 backgroundGradient:{
+				 	 startPoint: { x: '50%', y: '0%' },
+					 endPoint: { x: '50%', y: '100%' },
+					 colors: ['#889294','#C4C4C4']
+				 },
+			   font:{fontSize:'0dp'},
+			 	 color: '#889294'
+			 });
     row.add(label);
     row.id = i;
     $.topic_list.appendRow(row);
