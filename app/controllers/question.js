@@ -49,7 +49,10 @@ cButton.addEventListener('click', function(){
 	tf.value = '';
 	Ti.API.debug('Adding text: ' + text);
 	//TODO Validate user signed in
-	if(!text)alert('No input');
+	if(!text){
+		alert('No input');
+		return;
+	}
 	var time = new Date(),
 			answer = {
 				content: text,
@@ -65,6 +68,7 @@ cButton.addEventListener('click', function(){
 	question['answers'].push(answer);
 	Ti.API.debug('Saving answer ' + JSON.stringify(answer));
 	course.save();
+	updateView();
 });
 
 var textField = Ti.UI.createTextField({

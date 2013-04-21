@@ -7,6 +7,5 @@
 			
 			</TableViewSection>
 		</TableView>
-		<TextArea id="comment_text" /><Button id="comment_button" text="Submit"/>
 	</Window>
 </Alloy>

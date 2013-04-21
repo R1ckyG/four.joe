@@ -17,7 +17,8 @@
 }
 
 "#comment_table":{
-	top: 50
+	top: 50,
+   height: 260
 }
 
 "#comment_button":{
