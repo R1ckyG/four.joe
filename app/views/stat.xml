@@ -1,4 +1,5 @@
 <Alloy>
-	<View class="container">
-	</View>
+	<Window class="container">
+		<Label>Coming Soon</Label>
+	</Window>
 </Alloy>

@@ -1,24 +1,33 @@
 ".container": {
-	backgroundColor: "white"
+	backgroundColor: "#E9E9E9"
 }
 
 "#comment_text":{
 	bottom:5,
 	width: '80%',
 	height: 40,
-	left:5
+	left:5,
 }
 
 "#answer_text_label":{
 	height: 40,
 	top:5,
 	left: 2,
-	width: '98%'
+	width: '98%',
+	backgroundColor: 'white',
+	color:'black',
+	borderWidth: 1,
+	borderColor: '#000',
+	borderRadius: 2
 }
 
 "#comment_table":{
 	top: 50,
-   height: 260
+  height: '70%',
+	borderWidth: 1,
+	borderColor: '#000',
+	borderRadius: 2,
+	width: '98%'
 }
 
 "#comment_button":{

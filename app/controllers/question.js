@@ -138,7 +138,7 @@ var updateView = function(){
 				fontStyle: 'italic',
 				fontWeight: 'bold'
 			},
-			color: '#3299BB',
+			color: '#BCBCBC',
 			left: 5
 		});
 	  label = Ti.UI.createLabel({

@@ -21,6 +21,10 @@ var submitQuestion = function(e){
 					lastname: Alloy.Models.user.get('lastname')
 				}
 			};
+	if(!chat.title|| !chat.content){
+		alert('Missing fields');
+		return; 
+	}
 	chats.push(chat);
 	course.save({'chats':chats});
 }

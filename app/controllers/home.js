@@ -2,7 +2,8 @@ var settings = Alloy.createController('settings'),
 		//stats = Alloy.createController('signup'),
 		courses = Alloy.createController('course'),
     addclass = Alloy.createController('addclass'),
-    user = Alloy.Models.user,
+    stats = Alloy.createController('stat'),
+		user = Alloy.Models.user,
     updateFuncIndex = -1;
 Alloy.CFG.nav = $.nav;
 //$.course.fetch(options);
@@ -116,7 +117,7 @@ var updateUserCourses = function(courses) {
 };
 var updateHomeViews = function(user){
   var courses = user.get('courses');
-  Ti.API.debug('Updating home views: ' + JSON.stringify(courses));
+	Ti.API.debug('Updating home views: ' + JSON.stringify(courses));
   updateUserCourses(user.get('courses'));
 }
 updateFuncIndex =  Alloy.Updates.addUserFunc(updateHomeViews);

@@ -8,7 +8,7 @@ var addSchools = function(e){
 	Ti.API.debug(this.responseText);
   schools = new schoolCollection(JSON.parse(this.responseText));	
   Alloy.Collections.schools = schools;
-  
+  selectedSchool = Alloy.Collections.schools.at(0); 
 	var schoolColumn = $.schoolColumn;
   for(var i=0; i < schools.length; i++){
 	  var row = Ti.UI.createPickerRow();
@@ -37,18 +37,29 @@ var onSignUp = function(e){
 				lastname:$.lastname.value,
 				email:$.email.value,
 				password:$.password.value,
-				school: selectedSchool.get('_id')
+				school: {
+					id: selectedSchool.get('_id'),
+					name: selectedSchool.get('college')
+				}
 	}
   var options = {
     success: function(resObj, resText, options){
       Ti.API.debug('Setting id ' + JSON.stringify(resObj['_id']) + JSON.stringify( Alloy.Models.user));
-      var home = Alloy.createController('home');
+			var home = Alloy.createController('home');
       home.getView().open();
-    },
+		  var students = selectedCourse.get('students');
+			students.push({
+					id: Alloy.Models.user.get('id'),
+					firstname: Alloy.Models.user.get('firstname'),
+					lastname: Alloy.Models.user.get('lastname')
+			});
+			selectedCourse.save({'students': students});
+		},
     error: function(model, error, options){
       Alloy.Models.user.set('_id', error);
       Ti.API.debug(error + ': ' + JSON.stringify( Alloy.Models.user));
       //TODO Error handling for signup
+			alert('Problem creating account. Please try again later.');
     },
   };
   Alloy.Models.user.save(ud, options);
@@ -60,7 +71,7 @@ var xhr = Ti.Network.createHTTPClient({
 		onload: addSchools, 
 		onerror: function(e){
 			Ti.API.debug(e.error);
-			alert('error');
+			alert('Problem with network connection. Please try again later');
 		},
 		timeout:5000
 });

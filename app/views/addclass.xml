@@ -4,5 +4,6 @@
 			<PickerColumn id="courseColumn">
 			</PickerColumn>
 		</Picker>
-  </Window>
+  	<Button title="Submit" id="submit"/>
+	</Window>
 </Alloy>
