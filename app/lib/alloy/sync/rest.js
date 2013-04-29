@@ -1,5 +1,5 @@
 // Global URL variable
-var BASE_URL = 'http://localhost:8000/api/v1',
+var BASE_URL = 'http://54.215.4.22:8000/api/v1',
     call_url,
     type;
 

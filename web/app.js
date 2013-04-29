@@ -361,6 +361,7 @@ app.get('/api/v1/get_schools', function(req, res){
     if(err){
       res.send(403, 'You fucked up son');
     }else{
+      console.log('schools', docs);
       res.send(200, docs);
     }
   });

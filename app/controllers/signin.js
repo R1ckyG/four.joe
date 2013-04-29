@@ -17,7 +17,7 @@ $.submit.addEventListener('click', function(e){
   		},
   		timeout:5000
   }),
-  url = 'http://localhost:8000/api/v1/signin';
+  url = 'http://54.215.4.22:8000/api/v1/signin';
   xhr.open('POST',url);
   xhr.send({email:$.email.value, password:$.password.value});
 });

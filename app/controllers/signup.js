@@ -66,7 +66,7 @@ var onSignUp = function(e){
 	Ti.API.debug('Users: ' + JSON.stringify(Alloy.Models.user));
 };
 
-var url = 'http://localhost:8000/api/v1/get_schools';
+var url = 'http://54.215.4.22:8000/api/v1/get_schools';
 var xhr = Ti.Network.createHTTPClient({
 		onload: addSchools, 
 		onerror: function(e){
